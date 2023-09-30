@@ -17,11 +17,11 @@ def handle_events():
 	events = get_events()
 
 	for event in events:
-		if event.type == SDL_MOUSEBUTTONDOWN:
-			x, y = event.x, TUK_HEIGHT - 1 - event.y
-			pointList.append([x,y])
-		elif event.type == SDL_QUIT:
+		if event.type == SDL_QUIT:
 			running = False
+		elif event.type == SDL_MOUSEBUTTONDOWN:
+			x, y = event.x, TUK_HEIGHT - 1 - event.y
+			pointList.append([x, y])
 
 frame = 0
 def animation_right():
@@ -72,7 +72,7 @@ pointList = []
 before = [x, y]
 running = True;
 
-while True:
+while running:
 	if len(pointList) == 0:
 		animation_left()
 	else:
@@ -81,3 +81,5 @@ while True:
 		before = pointList.pop(0)
 
 	handle_events()
+
+close_canvas()
